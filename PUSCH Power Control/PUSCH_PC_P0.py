@@ -90,9 +90,11 @@ xmin = 0
 xmax = max_ul_prb
 ymin = df_prb.iloc[-1]['RSRP (dBm)']
 ymax = df_prb.iloc[0]['RSRP (dBm)']
+vmin = -20
+vmax = 23
 
 plt.imshow(df_prb_plot, cmap=cm.jet, interpolation='hermite',
-           extent=[xmin, xmax, ymin, ymax])
+           vmin=vmin, vmax=vmax, extent=[xmin, xmax, ymin, ymax])
 
 plt.xlabel("UL Scheduled PRB")
 plt.ylabel("RSRP (dBm)")
@@ -166,9 +168,11 @@ xmin = p0[0]
 xmax = p0[-1]
 ymin = df_p0.iloc[-1]['RSRP (dBm)']
 ymax = df_p0.iloc[0]['RSRP (dBm)']
+vmin = -20
+vmax = 23
 
 plt.imshow(df_p0_plot, cmap=cm.jet, interpolation='hermite',
-           extent=[xmin, xmax, ymin, ymax])
+           vmin=vmin, vmax=vmax, extent=[xmin, xmax, ymin, ymax])
 
 plt.xlabel("p0 (dBm)")
 plt.ylabel("RSRP (dBm)")
