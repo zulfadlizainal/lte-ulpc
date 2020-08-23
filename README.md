@@ -3,11 +3,11 @@ Simulating power control algorithm for UL in LTE based on 3GPP TS36.213 and avai
 
 ### List of projects
 
-PRACH Power Control ([Link](https://github.com/zulfadlizainal/5G-NR-Coverage-Prediction#1-coverage-map---free-space-path-loss-model-link))
+PRACH Power Control ([Link](https://github.com/zulfadlizainal/4G-LTE-UL-Power-Control#1-prach-power-control))
 <br />
-PUCCH Power Control ([Link](https://github.com/zulfadlizainal/5G-NR-Coverage-Prediction#2-coverage-map---measurement-based-pl-model-n77-link))
+PUCCH Power Control ([Link](https://github.com/zulfadlizainal/4G-LTE-UL-Power-Control#2-pucch-power-control))
 <br />
-PUSCH Power Control ([Link](https://github.com/zulfadlizainal/5G-NR-Coverage-Prediction#2-coverage-map---measurement-based-pl-model-n77-link))
+PUSCH Power Control ([Link](https://github.com/zulfadlizainal/4G-LTE-UL-Power-Control#3-pusch-power-control-link))
 <br />
 
 ## 1. PRACH Power Control
@@ -18,14 +18,11 @@ In Progress.
 
 In Progress.
 
-## 3. PUSCH Power Control ([Link](https://github.com/zulfadlizainal/5G-NR-Coverage-Prediction/tree/master/Coverage%20Map%20-%20Measurement%20Based%20PL%20Model%20(n77)))
+## 3. PUSCH Power Control ([Link](https://github.com/zulfadlizainal/4G-LTE-UL-Power-Control/tree/master/PUSCH%20Power%20Control))
 
 This simulation is derived from 3GPP TS36.213 PUSCH Power Control algorithm (which is derived by P0). In addition to that, the PUSCH TX power effect is also being studied when UL SINR is taken into account in PUSCH power adjustment algorithm.
 <br />
 <br />
-<img src="https://github.com/zulfadlizainal/5G-NR-Coverage-Prediction/blob/master/img/MBPLN77_Result1.png" alt="FSPL vs MBPL" title="FSPL vs MBPL" width=100% height=100% />
-<br />
-<br />
-<img src="https://github.com/zulfadlizainal/5G-NR-Coverage-Prediction/blob/master/img/MBPLN77_Result2.png.png" alt="Tilt Change" title="Tilt Change" width=100% height=100% />
+<img src="https://github.com/zulfadlizainal/4G-LTE-UL-Power-Control/blob/master/img/Result_PUSCH_PRB.png" alt="P0 vs SINR" title="P0 vs SINR" width=100% height=100% />
 <br />
 <br />
