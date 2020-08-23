@@ -10,20 +10,27 @@ The calculation for this simulation is taken straight from the 3GPP TS36.213 Pow
 <img src="https://github.com/zulfadlizainal/4G-LTE-UL-Power-Control/blob/master/img/PUSCH_Formula.png" alt="PUSCH P0 Based Formula" title="PUSCH P0 Based Formula" width=100% height=100% />
 <br />
 <br />
-In 3GPP, only P0-Based PUSCH Power Control algorithm is being specified. To further enhance close loop power control based on UL SINR, few more calculations need to be made.
+
+    P_PUSCH: PUSXH TX Power
+    P_CMAX: Maximum UE Allowable TX Power
+    M_PUSCH: Number of scheduled PRB
+    P0_PUSCH: Target UL Rx Power (Minimum UL Rx Power eNB can recognize the UL signal)
+    alpha (α): Fraction of path loss
+     
+In 3GPP, only P0-Based PUSCH Power Control algorithm is being specified. To further enhance close loop power control based on UL SINR, few more calculations need to be made (for SINR-Based PUSCH Power Control).
 
     1. UL Rx Power = UL Tx Power - UL Path Loss
     2. UL SINR = UL Rx Power / UL RSSI 
 
 ### Assumptions
 
-Assumptions need to be made to cover the whole spectrum of simulations. Below are some assumptions needed, some of them will be prompt for input while running the code.
+Assumptions need to be made to cover the whole spectrum of the simulations. Below are some assumptions needed, some of them will be prompt for input while running the code.
 
-    1. Maximum UE Allowable TX Power - To know the limitation of the UE TX power
-    2. Cell RS Power - To estimate UL path loss
-    3. Total PRB - To limit simulation up to desired spectrum bandwidth
-    4. UL RSSI - To understand noise condition for UL at the required simulation time
-    5. UL SINR Target - To simulate TX power compensation needed to achieve UL required SINR (SINR-Based PUSCH Power Control)  
+    1. Maximum UE Allowable TX Power: To know the limitation of the UE TX power
+    2. Cell RS Power: To estimate UL path loss
+    3. Total PRB: To limit simulation up to desired spectrum bandwidth
+    4. UL RSSI: To understand noise condition for UL at the required simulation time (SINR-Based PUSCH Power Control)
+    5. UL SINR Target: To simulate TX power compensation needed to achieve UL required SINR (SINR-Based PUSCH Power Control)  
 
 ### Results
 
