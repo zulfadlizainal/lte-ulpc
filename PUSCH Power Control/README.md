@@ -1,44 +1,42 @@
-# SI Occupancy
+# PUSCH Power Control
 
-Calculating the resource utilized by System Information (SI) corresponding to number of beams transmitting SI and SI periodicity. Simulation will consider 2 types of SI: 
-
-    1) RMSI (Required Minimum System Information) - SIB1 NR
-    2) OSI (Other System Information) - In this example calculating SIB2 NR
-
-### Assumptions
-
-To first understand the resource occupied by SI, we need to understand on how to calculate the total RE in 5G NR resource grid based on bandwidth. For the total RE calculation for NR, refer to this link ([Link](https://github.com/zulfadlizainal/5G-NR-Planning-And-Dimensioning/tree/master/Part%201%20Operating%20Band%2C%20Frame%20Structure/3_RE%20Count)) .
-
-The assumptions taken in calculating RMSI resource utilization in this simulation:
-
-    1. RMSI (SIB1) will use between 1008 RE to 2016 RE depending on informations it need to broadcast in SIB1.
-    2. Number of beams for SI is assumed to be similar to the number of beams supported for SSB in SUB6 and mmWave.
-    3. RMSI periodicity is assumed to be similar as SSB periodicity for initial access (20ms).
-
-The assumptions taken in calculating OSI resource utilization in this simulation (Eg: SIB2):
-
-    1. OSI will use between 504 RE to 2016 RE depending on informations it need to broadcast in the SIB (In this Eg: SIB2).
-    2. Number of beams for SI is assumed to be similar to the number of beams supported for SSB in SUB6 and mmWave.
-    3. OSI periodicity is based on si-Periodicity parameter defined in RMSI as stated in 3GPP TS 38.331. 
+This simulation is derived from 3GPP TS36.213 PUSCH Power Control algorithm (which is based on P0). In addition to that, the PUSCH TX power effect is also being studied when UL SINR is taken into account in PUSCH TX power adjustment algorithm.
 
 ### Calculation
 
-SI Occupancy / Frame (%) Formulae References
+The calculation for this simulation is taken straight from the 3GPP TS36.213 Power Control (for P0-Based PUSCH Power Control).
+<br />
+<br />
+<img src="https://github.com/zulfadlizainal/4G-LTE-UL-Power-Control/blob/master/img/PUSCH_Formula.png" alt="PUSCH P0 Based Formula" title="PUSCH P0 Based Formula" width=100% height=100% />
+<br />
+<br />
+In 3GPP, only P0-Based PUSCH Power Control algorithm is being specified. To further enhance close loop power control based on UL SINR, few more calculations need to be made.
 
-    ((No of RE Used for SI / (SI Periodicity (ms) / 10ms Frame)) * No of Beams) / (Total RE/Frame)
+    1. UL Rx Power = UL Tx Power - UL Path Loss
+    2. UL SINR = UL Rx Power / UL RSSI 
+
+### Assumptions
+
+Assumptions need to be made to cover the whole spectrum of simulations. Below are some assumptions needed, some of them will be prompt for input while running the code.
+
+    1. Maximum UE Allowable TX Power - To know the limitation of the UE TX power
+    2. Cell RS Power - To estimate UL path loss
+    3. Total PRB - To limit simulation up to desired spectrum bandwidth
+    4. UL RSSI - To understand noise condition for UL at the required simulation time
+    5. UL SINR Target - To simulate TX power compensation needed to achieve UL required SINR (SINR-Based PUSCH Power Control)  
 
 ### Results
 
-Eg: The resource utilized by RMSI (SIB1 NR) for 20ms RMSI periodicity in different beam settings for SCS 120kHz and BW 50MHz:
+The impact of TX power change in P0-Based PUSCH Power Control when alpha and P0 parameter settings is being changed:
 <br />
 <br />
-<img src="https://github.com/zulfadlizainal/5G-NR-Planning-And-Dimensioning/blob/master/Part%203%20System%20Information/img/si_rmsi_result.png" alt="RMSI (SIB1 NR)" title="RMSI (SIB1 NR)" width=100% height=100% />
+<img src="https://github.com/zulfadlizainal/4G-LTE-UL-Power-Control/blob/master/img/Result_PUSCH_alpha%2BP0_P0Based.png" alt="alpha & p0" title="alpha & p0" width=100% height=100% />
 <br />
 <br />
-Eg: The resource utilized by OSI (SIB2 NR) for different SI periodicity in different beam settings for SCS 120kHz and BW 50MHz:
+The impact of TX power change in P0-Based PUSCH Power Control when different number of UL PRB is being scheduled. The result also try to consider enhancement of the feature by taking UL SINR into account for PUSCH TX power compensation (SINR-Based PUSCH Power Control).
 <br />
 <br />
-<img src="https://github.com/zulfadlizainal/5G-NR-Planning-And-Dimensioning/blob/master/Part%203%20System%20Information/img/si_osi_result.png" alt="OSI (SIB2 NR)" title="OSI (SIB2 NR)" width=100% height=100% />
+<img src="https://github.com/zulfadlizainal/4G-LTE-UL-Power-Control/blob/master/img/Result_PUSCH_PRB_P0%2BSINRBased.png" alt="PRB p0 vs SINR" title="PRB p0 vs SINR" width=100% height=100% />
 <br />
 <br />
 
