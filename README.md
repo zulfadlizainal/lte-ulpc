@@ -3,7 +3,7 @@ Simulating power control algorithm for UL in LTE based on 3GPP TS36.213 and avai
 
 ### List of projects
 
-PRACH Power Control ([Link](https://github.com/zulfadlizainal/4G-LTE-UL-Power-Control#1-prach-power-control))
+PRACH Power Control ([Link](https://github.com/zulfadlizainal/4G-LTE-UL-Power-Control#1-prach-power-control-link))
 <br />
 PUCCH Power Control ([Link](https://github.com/zulfadlizainal/4G-LTE-UL-Power-Control#2-pucch-power-control))
 <br />

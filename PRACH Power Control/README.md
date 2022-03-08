@@ -13,8 +13,13 @@ The calculation for PRACH MSG1 Tx Power simulation is taken straight from the 3G
 
 Simplified formula:
 
-    P_PRACH (n1)   = min{P_CMAX, PREAMBLE_RECEIVED_TARGET_POWER + PL}                      (3GPP TS 36.321)
-    P_PRACH (>n1) = min{P_CMAX, PREAMBLE_RECEIVED_TARGET_POWER + PL + RAMPINGSTEP}         (3GPP TS 36.321)
+    P_PRACH (n1)   = min{p-max, preambleInitialReceivedTargetPower + Path Loss}                      (3GPP TS 36.321)
+    P_PRACH (>n1)  = min{p-max, preambleInitialReceivedTargetPower + Path Loss + powerRampingStep}   (3GPP TS 36.321)
+
+Where:
+
+    Path Loss = referenceSignalPower - RSRP
+    n = preambleTransMax
 
 Important parameters:
 
@@ -26,7 +31,7 @@ Important parameters:
 
 The calculation for PUSCH MSG3 Tx Power simulation is taken straight from the 3GPP TS36.213.
 
-    P_PUSCH_MSG3 = min{P_CMAX, P_PRACH + (DELTAMSG3)}                                       (3GPP TS 36.213)
+    P_PUSCH_MSG3 = min{p-max, P_PRACH + deltaPreambleMsg3}                                                (3GPP TS 36.213)
 
 Important parameters:
 
@@ -37,6 +42,7 @@ Important parameters:
 Below are parameter assumptions taken to produce the results:
 
     start_rsrp = [-90, -95, -100, -105, -110, -115, -120, -125, -130, -135, -140]
+
     referenceSignalPower = 20                                                           # From SIB2 in dBm
     preambleInitialReceivedTargetPower = -112                                           # From SIB2 in dBm
     powerRampingStep = 4                                                                # From SIB2 in dB
@@ -53,9 +59,11 @@ Result observed for above parameter set:
 <br />
 <br />
 
-n definitions for MSG3 Power:
-n1 = Success MSG2 in n1, start MSG3
-n2 = Fail MSG2 in n1, success MSG2 in n2, start MSG3
-…
-…
-n10 = Fail MSG2 in n1 to n9, success MSG2 in n10, start MSG3
+Note:
+
+    n definitions for MSG3 Power:
+    n1 = Success MSG2 in n1, start MSG3
+    n2 = Fail MSG2 in n1, success MSG2 in n2, start MSG3
+    …
+    …
+    n10 = Fail MSG2 in n1 to n9, success MSG2 in n10, start MSG3
