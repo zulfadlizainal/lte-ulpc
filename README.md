@@ -1,5 +1,5 @@
 # 4G-LTE-UL-Power-Control
-Simulating power control algorithm for UL in LTE based on 3GPP TS36.213 and available extended features. This scope includes UL power control algorithm for PRACH, PUCCH, and PUSCH.
+Simulating power control algorithm for UL in LTE based on 3GPP and available extended features. This scope includes UL power control algorithm for PRACH, PUCCH, and PUSCH.
 
 ### List of projects
 
