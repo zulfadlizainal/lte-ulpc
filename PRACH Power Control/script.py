@@ -39,6 +39,10 @@ def prach_txpower(df_prach):
         df_prach[column] = np.where(
             df_prach[column] > pmax, pmax, df_prach[column])
 
+    # Duplicate n1 as n0 - Fix for step charts
+    n1 = df_prach.iloc[:, 0].copy()
+    df_prach.insert(0, 'n0', n1)
+
     return df_prach
 
 
@@ -67,6 +71,10 @@ def plot_prach(df_prach):
     plt.ylim(pmax-pmax-5, pmax+5)
     plt.xlim(-0.1, preambleTransMax-1)
 
+    # Set x-ticks every 5 steps
+    xticks = range(0, preambleTransMax, 2)
+    plt.xticks(xticks)
+
     plt.grid()
     plt.legend(start_rsrp, bbox_to_anchor=(
         1.32, 0.9), title="Start RSRP (dBm)")
@@ -89,6 +97,10 @@ def plot_pusch_msg3(df_pusch_msg3):
 
     plt.ylim(pmax-pmax-5, pmax+5)
     plt.xlim(-0.1, preambleTransMax-1)
+
+    # Set x-ticks every 5 steps
+    xticks = range(0, preambleTransMax, 2)
+    plt.xticks(xticks)
 
     plt.grid()
     plt.legend(start_rsrp, bbox_to_anchor=(
